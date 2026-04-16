@@ -27,6 +27,17 @@ function jam_plugin_menu() {
 }
 add_action('admin_menu', 'jam_plugin_menu');
 
+// Settings link in plugins list
+function jam_plugin_add_settings_link($links) {
+    $settings_url = admin_url('admin.php?page=just-a-modal-plugin');
+    $settings_link = '<a href="' . esc_url($settings_url) . '">Settings</a>';
+    array_unshift($links, $settings_link);
+    
+    return $links;
+}
+add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'jam_plugin_add_settings_link' );
+
+
 // Admin settings
 function jam_plugin_settings_init() {
     register_setting('jam_plugin_settings', 'jam_plugin_text_field');
@@ -43,6 +54,14 @@ function jam_plugin_settings_init() {
     );
 
     add_settings_field(
+        'jam_plugin_enable_modal',
+        'Enable Modal',
+        'jam_plugin_enable_modal_render',
+        'just-a-modal-plugin',
+        'jam_plugin_section'
+    );
+
+    add_settings_field(
         'jam_plugin_text_field',
         'Modal Title',
         'jam_plugin_text_field_render',
@@ -51,25 +70,17 @@ function jam_plugin_settings_init() {
     );
 
     add_settings_field(
-        'jam_plugin_richtext_field',
-        'Modal Content',
-        'jam_plugin_richtext_field_render',
-        'just-a-modal-plugin',
-        'jam_plugin_section'
-    );
-
-    add_settings_field(
         'jam_plugin_image_field',
-        'Image',
+        'Modal Image',
         'jam_plugin_image_field_render',
         'just-a-modal-plugin',
         'jam_plugin_section'
     );
 
     add_settings_field(
-        'jam_plugin_enable_modal',
-        'Enable Modal on First Visit',
-        'jam_plugin_enable_modal_render',
+        'jam_plugin_richtext_field',
+        'Modal Content',
+        'jam_plugin_richtext_field_render',
         'just-a-modal-plugin',
         'jam_plugin_section'
     );
@@ -139,14 +150,13 @@ function jam_plugin_hash_render() {
 }
 
 // Render media uploader
-add_action('admin_enqueue_scripts', 'jam_plugin_enqueue_scripts');
-
 function jam_plugin_enqueue_scripts($hook) {
-    if ('toplevel_page_just-a-modal-plugin' !== $hook) {
+    if ('toplevel_page_' . plugin_basename(__FILE__) !== $hook) {
         return;
     }
     wp_enqueue_media();
 }
+add_action('admin_enqueue_scripts', 'jam_plugin_enqueue_scripts');
 
 // Admin page
 function jam_plugin_page() {
@@ -165,15 +175,15 @@ function jam_plugin_page() {
 }
 
 function jam_plugin_section_callback() {
-    echo '<p>A very basic modal popup. It will render above a dark background with a title, content and, optionally, an image.</p>';
-    echo '<p>The modal can be toggled via the <b>"Enable Modal on First Visit"</b> checkbox. Generating a new hash will make the modal reapper on browsers that already visited the site (useful for when changes have been done to its content).</p>';
+    echo '<p>A very basic modal popup. It will render above a dark background with a title, an image and some text.</p>';
+    echo '<p>The modal can be toggled via the <b>"Enable Modal"</b> checkbox. Generating a new hash will make the modal reapper on browsers that already visited the site (useful for when changes have been done to its content).</p>';
 }
 
 // Admin JS
-add_action('admin_enqueue_scripts', 'jam_plugin_admin_js');
 function jam_plugin_admin_js() {
     wp_enqueue_script('just-a-modal-admin-script', plugins_url('assets/just-a-modal-admin.js', __FILE__), array(), JAM_VERSION, true);
 }
+add_action('admin_enqueue_scripts', 'jam_plugin_admin_js');
 
 // Load assets
 function jam_plugin_assets() {
