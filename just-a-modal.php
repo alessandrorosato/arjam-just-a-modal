@@ -45,6 +45,7 @@ function jam_plugin_settings_init() {
     register_setting('jam_plugin_settings', 'jam_plugin_image_field');
     register_setting('jam_plugin_settings', 'jam_plugin_enable_modal');
     register_setting('jam_plugin_settings', 'jam_plugin_hash');
+    register_setting('jam_plugin_settings', 'jam_plugin_delay');
 
     add_settings_section(
         'jam_plugin_section',
@@ -81,6 +82,14 @@ function jam_plugin_settings_init() {
         'jam_plugin_richtext_field',
         'Modal Content',
         'jam_plugin_richtext_field_render',
+        'just-a-modal-plugin',
+        'jam_plugin_section'
+    );
+
+    add_settings_field(
+        'jam_plugin_delay',
+        'Modal Delay',
+        'jam_plugin_delay_render',
         'just-a-modal-plugin',
         'jam_plugin_section'
     );
@@ -149,14 +158,10 @@ function jam_plugin_hash_render() {
     echo '<input type="text" name="jam_plugin_hash" value="' . esc_attr($value) . '" size="16"> <button type="button" id="my-custom-admin-btn" class="button button-secondary">Generate!</button>';
 }
 
-// Render media uploader
-function jam_plugin_enqueue_scripts($hook) {
-    if ('toplevel_page_' . plugin_basename(__FILE__) !== $hook) {
-        return;
-    }
-    wp_enqueue_media();
+function jam_plugin_delay_render() {
+    $value = get_option('jam_plugin_delay', '0');
+    echo '<input type="number" name="jam_plugin_delay" value="' . esc_attr($value) . '"> (seconds)';
 }
-add_action('admin_enqueue_scripts', 'jam_plugin_enqueue_scripts');
 
 // Admin page
 function jam_plugin_page() {
@@ -177,6 +182,7 @@ function jam_plugin_page() {
 function jam_plugin_section_callback() {
     echo '<p>A very basic modal popup. It will render above a dark background with a title, an image and some text.</p>';
     echo '<p>The modal can be toggled via the <b>"Enable Modal"</b> checkbox. Generating a new hash will make the modal reapper on browsers that already visited the site (useful for when changes have been done to its content).</p>';
+    echo '<p>A delay (in seconds) can be added before the modal shows up with the <b>"Modal Delay"</b> field. Default value is 0, meaning the modal will be rendered on page load.</p>';
 }
 
 // Admin JS
@@ -194,7 +200,8 @@ function jam_plugin_assets() {
         'richtext'      => get_option('jam_plugin_richtext_field'),
         'image'         => get_option('jam_plugin_image_field'),
         'enable_modal'  => get_option('jam_plugin_enable_modal', 'on') === 'on',
-        'modal_hash'    => get_option('jam_plugin_hash', '1')
+        'modal_hash'    => get_option('jam_plugin_hash', '1'),
+        'modal_delay'    => get_option('jam_plugin_delay', 0)
     ));
 
 }

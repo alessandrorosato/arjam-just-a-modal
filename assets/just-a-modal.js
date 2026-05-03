@@ -30,13 +30,15 @@ document.addEventListener('DOMContentLoaded', function() {
         jam_plugin_data.enable_modal
         && (modalHash !== currentHash)
     ) {
-        modal.style.display = 'block';
-        localStorage.setItem('jam_hash', currentHash);
+        const delay = jam_plugin_data.modal_delay * 1000;
+        setTimeout(function(){
+            modal.style.display = 'block';
+            localStorage.setItem('jam_hash', currentHash);
+        }, delay);
     }
 
     // Close modal
     closeBtn.addEventListener('click', function() {
-        console.log(modal.style.display);
         modal.style.display = 'none';
     });
 
