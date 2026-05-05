@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const customBtn = document.getElementById('my-custom-admin-btn');
-    const hashField = document.querySelector('input[name="jam_plugin_hash"]');
+    const hashField = document.querySelector('input[name="arjam_plugin_hash"]');
 
     if (customBtn) {
         customBtn.addEventListener('click', async function(e) {
