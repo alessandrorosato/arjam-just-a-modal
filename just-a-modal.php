@@ -129,6 +129,7 @@ function arjam_plugin_image_field_render() {
     ?>
     <input type="text" name="arjam_plugin_image_field" id="arjam_plugin_image_field" value="<?php echo esc_url($value); ?>" class="regular-text">
     <input type="button" class="button" value="Upload Image" id="arjam_plugin_upload_image_button">
+    <p class="description">Image should be maximum 600 pixels in width.</p>
     <script>
     jQuery(document).ready(function($) {
         $('#arjam_plugin_upload_image_button').click(function(e) {
@@ -160,7 +161,8 @@ function arjam_plugin_hash_render() {
 
 function arjam_plugin_delay_render() {
     $value = get_option('arjam_plugin_delay', '0');
-    echo '<input type="number" name="arjam_plugin_delay" value="' . esc_attr($value) . '"> (seconds)';
+    echo '<input type="number" name="arjam_plugin_delay" value="' . esc_attr($value) . '">';
+    echo '<p class="description">Delay to trigger the modal window, in seconds. Default value is 0, meaning the modal will be rendered on page load.</p>';
 }
 
 // Admin page
@@ -182,7 +184,6 @@ function arjam_plugin_page() {
 function arjam_plugin_section_callback() {
     echo '<p>A very basic modal popup. It will render above a dark background with a title, an image and some text.</p>';
     echo '<p>The modal can be toggled via the <b>"Enable Modal"</b> checkbox. Generating a new hash will make the modal reapper on browsers that already visited the site (useful for when changes have been done to its content).</p>';
-    echo '<p>A delay (in seconds) can be added before the modal shows up with the <b>"Modal Delay"</b> field. Default value is 0, meaning the modal will be rendered on page load.</p>';
 }
 
 // Admin JS
