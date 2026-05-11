@@ -17,6 +17,14 @@
     border: 1px solid #888;
     width: 80%;
     max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    @media (width < 768px) {
+        height: 90vh;
+        max-width: 400px;
+        margin: 5% auto;
+        padding: 10px;
+    }
 }
 
 #arjam-modal-close {
@@ -25,6 +33,9 @@
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
+    position: relative;
+    top: -12px;
+    right: 0px;
 }
 
 .arjam-modal-open {
