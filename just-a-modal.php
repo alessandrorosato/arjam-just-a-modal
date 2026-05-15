@@ -4,14 +4,14 @@
  * Description: Render a simple modal with a title, some text and an image. No frills, no pro version.
  * Author: Alessandro Rosato
  * Author URI: https://www.alessandrorosato.com/
- * Version: 0.1.0
+ * Version: 0.9.0
  */
 
 if(!defined('ABSPATH')) {
     exit;
 }
 
-define('ARJAM_VERSION', '0.2.0' );
+define('ARJAM_VERSION', '0.9.0' );
 
 // Admin menu
 function arjam_plugin_menu() {
@@ -36,7 +36,6 @@ function arjam_plugin_add_settings_link($links) {
     return $links;
 }
 add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'arjam_plugin_add_settings_link' );
-
 
 // Admin settings
 function arjam_plugin_settings_init() {
@@ -202,8 +201,7 @@ function arjam_plugin_assets() {
         'image'         => get_option('arjam_plugin_image_field'),
         'enable_modal'  => get_option('arjam_plugin_enable_modal', 'on') === 'on',
         'modal_hash'    => get_option('arjam_plugin_hash', '1'),
-        'modal_delay'    => get_option('arjam_plugin_delay', 0)
+        'modal_delay'   => get_option('arjam_plugin_delay', 0)
     ));
-
 }
 add_action('wp_enqueue_scripts', 'arjam_plugin_assets');

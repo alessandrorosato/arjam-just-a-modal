@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-
 // Function to generate a SHA-256 hash from the current timestamp
 async function generateTimeHash() {
     const encoder = new TextEncoder();
