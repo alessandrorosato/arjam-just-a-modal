@@ -187,14 +187,14 @@ function arjam_plugin_section_callback() {
 
 // Admin JS
 function arjam_plugin_admin_js() {
-    wp_enqueue_script('just-a-modal-admin-script', plugins_url('assets/just-a-modal-admin.js', __FILE__), array(), ARJAM_VERSION, true);
+    wp_enqueue_script('just-a-modal-admin-script', plugins_url('admin/js/just-a-modal-admin.js', __FILE__), array(), ARJAM_VERSION, true);
 }
 add_action('admin_enqueue_scripts', 'arjam_plugin_admin_js');
 
 // Load assets
 function arjam_plugin_assets() {
-    wp_enqueue_style('just-a-modal-style', plugins_url('assets/just-a-modal.css', __FILE__), array(), ARJAM_VERSION, 'all');
-    wp_enqueue_script('just-a-modal-script', plugins_url('assets/just-a-modal.js', __FILE__), array(), ARJAM_VERSION, true);
+    wp_enqueue_style('just-a-modal-style', plugins_url('public/css/just-a-modal.css', __FILE__), array(), ARJAM_VERSION, 'all');
+    wp_enqueue_script('just-a-modal-script', plugins_url('public/js/just-a-modal.js', __FILE__), array(), ARJAM_VERSION, true);
     wp_localize_script('just-a-modal-script', 'arjam_plugin_data', array(
         'text'          => get_option('arjam_plugin_text_field'),
         'richtext'      => get_option('arjam_plugin_richtext_field'),
