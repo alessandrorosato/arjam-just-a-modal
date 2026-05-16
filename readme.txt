@@ -49,3 +49,9 @@ You can eaily override the plugin's style by using the following IDs in your cus
 This plugin stores on the visitor browser the hash that is meant to check whether the user has seen the current modal or not. This hash is stored in a key in the local storage called `arjam_hash`.
 
 Besides that, no other cookie or local storage entry is created.
+
+== Screenshots ==
+
+1. Backend settings
+2. Frontend - Mobile
+3. Frontend - Desktop
