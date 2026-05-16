@@ -9,9 +9,9 @@ document.addEventListener('DOMContentLoaded', function () {
         && (modalHash !== currentHash)
     ) {
         // Modal content
-        const title = arjam_plugin_data.text ? `<h2>${arjam_plugin_data.text}</h2>` : '';
-        const image = arjam_plugin_data.image ? `<div class="arjam-image"><img src="${arjam_plugin_data.image}" style="max-width:100%;" /></div>` : '';
-        const text = arjam_plugin_data.richtext ? `<div class="arjam-richtext">${arjam_plugin_data.richtext}</div>` : '';
+        const title = arjam_plugin_data.text ? `<h2 id="arjam-modal-title">${arjam_plugin_data.text}</h2>` : '';
+        const image = arjam_plugin_data.image ? `<div id="arjam-modal-image"><img src="${arjam_plugin_data.image}" style="max-width:100%;" /></div>` : '';
+        const text = arjam_plugin_data.richtext ? `<div id="arjam-modal-richtext">${arjam_plugin_data.richtext}</div>` : '';
 
         // Create modal HTML
         const modalHTML = `
