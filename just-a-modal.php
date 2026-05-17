@@ -4,14 +4,14 @@
  * Description: Render a simple modal with a title, some text and an image. No frills, no pro version.
  * Author: Alessandro Rosato
  * Author URI: https://www.alessandrorosato.com/
- * Version: 0.9.0
+ * Version: 1.0.0
  */
 
 if(!defined('ABSPATH')) {
     exit;
 }
 
-define('ARJAM_VERSION', '0.9.0' );
+define('ARJAM_VERSION', '1.0.0' );
 
 // Admin menu
 function arjam_plugin_menu() {
