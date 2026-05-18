@@ -1,8 +1,9 @@
 === Just A Modal ===
-Contributors: Alessandro Rosato
+Contributors: alessandrorosato
 Tags: modal, popup
 Tested up to: 6.9.4
 Stable tag: 1.0.0
+Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,8 +51,27 @@ This plugin stores on the visitor browser the hash that is meant to check whethe
 
 Besides that, no other cookie or local storage entry is created.
 
+== Frequently Asked Questions ==
+
+= Why should I use this plugin instead of X =
+
+That's the neat part, you don't! It's just a very simple and straight-forward plugin to add one simple modal to a WordPress website.
+
+= If there are other plugins addressing the same feature, why making a new one? =
+
+I just had the second-hand experience of a modal plugin deleting all modals already set and running because of an update. The plugin was also relying on a third-party platform (which was apparently responsible for making settings outdated and for deleting modals). I want to offer a *simple* solution.
+
+= The modal is ugly, can I change its appearance? =
+
+Yes you can! If you haven't seen it, scroll up to the "Style override" section. There's a list of IDs that you can use to set your own CSS rules.
+
 == Screenshots ==
 
 1. Backend settings
 2. Frontend - Mobile
 3. Frontend - Desktop
+
+== Changelog ==
+
+= 1.0.0 =
+* First release,the plugin is fully operational!
