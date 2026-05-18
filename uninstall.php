@@ -3,7 +3,7 @@ if(!defined('WP_UNINSTALL_PLUGIN')) {
     die;
 }
 
-$options = [
+$arjam_options = [
     'arjam_plugin_text_field',
     'arjam_plugin_richtext_field',
     'arjam_plugin_image_field',
@@ -12,9 +12,9 @@ $options = [
     'arjam_plugin_delay'
 ];
 
-foreach ($options as $option) {
-    delete_option($option);
+foreach ($arjam_options as $arjam_option) {
+    delete_option($arjam_option);
 
     // Multisite
-    delete_site_option($option);
+    delete_site_option($arjam_option);
 }

@@ -5,6 +5,7 @@
  * Author: Alessandro Rosato
  * Author URI: https://www.alessandrorosato.com/
  * Version: 1.0.0
+ * License: GPLv2 or later
  */
 
 if(!defined('ABSPATH')) {
@@ -39,12 +40,12 @@ add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'arjam_plugin_ad
 
 // Admin settings
 function arjam_plugin_settings_init() {
-    register_setting('arjam_plugin_settings', 'arjam_plugin_text_field');
-    register_setting('arjam_plugin_settings', 'arjam_plugin_richtext_field');
-    register_setting('arjam_plugin_settings', 'arjam_plugin_image_field');
-    register_setting('arjam_plugin_settings', 'arjam_plugin_enable_modal');
-    register_setting('arjam_plugin_settings', 'arjam_plugin_hash');
-    register_setting('arjam_plugin_settings', 'arjam_plugin_delay');
+    register_setting('arjam_plugin_settings', 'arjam_plugin_text_field', ['type' => 'string', 'sanitize_callback' => 'sanitize_text_field']);
+    register_setting('arjam_plugin_settings', 'arjam_plugin_richtext_field', ['type' => 'string', 'sanitize_callback' => 'sanitize_textarea_field']);
+    register_setting('arjam_plugin_settings', 'arjam_plugin_image_field', ['type' => 'string', 'sanitize_callback' => 'sanitize_text_field']);
+    register_setting('arjam_plugin_settings', 'arjam_plugin_enable_modal', ['type' => 'boolean', 'sanitize_callback' => 'wp_validate_boolean']);
+    register_setting('arjam_plugin_settings', 'arjam_plugin_hash', ['type' => 'string', 'sanitize_callback' => 'sanitize_text_field']);
+    register_setting('arjam_plugin_settings', 'arjam_plugin_delay', ['type' => 'string', 'sanitize_callback' => 'sanitize_text_field']);
 
     add_settings_section(
         'arjam_plugin_section',
@@ -149,8 +150,8 @@ function arjam_plugin_image_field_render() {
 }
 
 function arjam_plugin_enable_modal_render() {
-    $value = get_option('arjam_plugin_enable_modal', 'on');
-    echo '<input type="checkbox" name="arjam_plugin_enable_modal" ' . checked('on', $value, false) . '>';
+    $value = get_option('arjam_plugin_enable_modal', true);
+    echo '<input type="checkbox" name="arjam_plugin_enable_modal" ' . checked(true, $value, false) . '>';
 }
 
 function arjam_plugin_hash_render() {

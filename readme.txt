@@ -1,7 +1,7 @@
-=== Just A Modal ===
+=== Just a Modal ===
 Contributors: alessandrorosato
 Tags: modal, popup
-Tested up to: 6.9.4
+Tested up to: 6.9
 Stable tag: 1.0.0
 Requires PHP: 7.0
 License: GPLv2 or later
