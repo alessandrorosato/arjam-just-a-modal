@@ -1,4 +1,4 @@
-# Just a Modal
+# ARJAM - Just a Modal
 
 Just a simple modal window to display content to a new visitor on their first visit. Includes a title, image and text.
 
@@ -22,10 +22,10 @@ It uses cookies to store a hash that will hide the modal after the first visit. 
 
 ### Manual installation
 
-1. Download the 'just-a-modal' zip file.
+1. Download the 'arjam-just-a-modal' zip file.
 2. Extract the content and copy to the `/wp-content/plugins/` directory of your WordPress installation.
 3. From your WordPress dashboard, go to 'Plugins > Installed Plugins'.
-4. Find the 'Just a Modal' plugin and activate it.
+4. Find the 'ARJAM - Just a Modal' plugin and activate it.
 5. Have fun!
 
 ## Style override

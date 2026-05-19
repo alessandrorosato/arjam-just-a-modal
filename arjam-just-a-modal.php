@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Just a Modal
+ * Plugin Name: ARJAM - Just a Modal
  * Description: Render a simple modal with a title, some text and an image. No frills, no pro version.
  * Author: Alessandro Rosato
  * Author URI: https://www.alessandrorosato.com/
@@ -17,10 +17,10 @@ define('ARJAM_VERSION', '1.0.0' );
 // Admin menu
 function arjam_plugin_menu() {
     add_menu_page(
-        'Just a Modal',         // Page title
-        'Just a Modal',         // Menu title
+        'ARJAM - Just a Modal',         // Page title
+        'ARJAM - Just a Modal',         // Menu title
         'manage_options',       // Capability required to access
-        'just-a-modal-plugin',  // Menu slug
+        'arjam-just-a-modal-plugin',  // Menu slug
         'arjam_plugin_page',      // Function to display the page
         'dashicons-sticky',     // Icon
         100                     // Position
@@ -30,7 +30,7 @@ add_action('admin_menu', 'arjam_plugin_menu');
 
 // Settings link in plugins list
 function arjam_plugin_add_settings_link($links) {
-    $settings_url = admin_url('admin.php?page=just-a-modal-plugin');
+    $settings_url = admin_url('admin.php?page=arjam-just-a-modal-plugin');
     $settings_link = '<a href="' . esc_url($settings_url) . '">Settings</a>';
     array_unshift($links, $settings_link);
     
@@ -51,14 +51,14 @@ function arjam_plugin_settings_init() {
         'arjam_plugin_section',
         'Settings',
         'arjam_plugin_section_callback',
-        'just-a-modal-plugin'
+        'arjam-just-a-modal-plugin'
     );
 
     add_settings_field(
         'arjam_plugin_enable_modal',
         'Enable Modal',
         'arjam_plugin_enable_modal_render',
-        'just-a-modal-plugin',
+        'arjam-just-a-modal-plugin',
         'arjam_plugin_section'
     );
 
@@ -66,7 +66,7 @@ function arjam_plugin_settings_init() {
         'arjam_plugin_text_field',
         'Modal Title',
         'arjam_plugin_text_field_render',
-        'just-a-modal-plugin',
+        'arjam-just-a-modal-plugin',
         'arjam_plugin_section'
     );
 
@@ -74,7 +74,7 @@ function arjam_plugin_settings_init() {
         'arjam_plugin_image_field',
         'Modal Image',
         'arjam_plugin_image_field_render',
-        'just-a-modal-plugin',
+        'arjam-just-a-modal-plugin',
         'arjam_plugin_section'
     );
 
@@ -82,7 +82,7 @@ function arjam_plugin_settings_init() {
         'arjam_plugin_richtext_field',
         'Modal Content',
         'arjam_plugin_richtext_field_render',
-        'just-a-modal-plugin',
+        'arjam-just-a-modal-plugin',
         'arjam_plugin_section'
     );
 
@@ -90,7 +90,7 @@ function arjam_plugin_settings_init() {
         'arjam_plugin_delay',
         'Modal Delay',
         'arjam_plugin_delay_render',
-        'just-a-modal-plugin',
+        'arjam-just-a-modal-plugin',
         'arjam_plugin_section'
     );
 
@@ -98,7 +98,7 @@ function arjam_plugin_settings_init() {
         'arjam_plugin_hash',
         'Modal Hash',
         'arjam_plugin_hash_render',
-        'just-a-modal-plugin',
+        'arjam-just-a-modal-plugin',
         'arjam_plugin_section'
     );
 }
@@ -169,11 +169,11 @@ function arjam_plugin_delay_render() {
 function arjam_plugin_page() {
     ?>
     <div class="wrap">
-        <h1>Just a Modal</h1>
+        <h1>ARJAM - Just a Modal</h1>
         <form method="post" action="options.php">
             <?php
             settings_fields('arjam_plugin_settings');
-            do_settings_sections('just-a-modal-plugin');
+            do_settings_sections('arjam-just-a-modal-plugin');
             submit_button();
             ?>
         </form>
@@ -188,15 +188,15 @@ function arjam_plugin_section_callback() {
 
 // Admin JS
 function arjam_plugin_admin_js() {
-    wp_enqueue_script('just-a-modal-admin-script', plugins_url('admin/js/just-a-modal-admin.js', __FILE__), array(), ARJAM_VERSION, true);
+    wp_enqueue_script('arjam-just-a-modal-admin-script', plugins_url('admin/js/arjam-just-a-modal-admin.js', __FILE__), array(), ARJAM_VERSION, true);
 }
 add_action('admin_enqueue_scripts', 'arjam_plugin_admin_js');
 
 // Load assets
 function arjam_plugin_assets() {
-    wp_enqueue_style('just-a-modal-style', plugins_url('public/css/just-a-modal.css', __FILE__), array(), ARJAM_VERSION, 'all');
-    wp_enqueue_script('just-a-modal-script', plugins_url('public/js/just-a-modal.js', __FILE__), array(), ARJAM_VERSION, true);
-    wp_localize_script('just-a-modal-script', 'arjam_plugin_data', array(
+    wp_enqueue_style('arjam-just-a-modal-style', plugins_url('public/css/arjam-just-a-modal.css', __FILE__), array(), ARJAM_VERSION, 'all');
+    wp_enqueue_script('arjam-just-a-modal-script', plugins_url('public/js/arjam-just-a-modal.js', __FILE__), array(), ARJAM_VERSION, true);
+    wp_localize_script('arjam-just-a-modal-script', 'arjam_plugin_data', array(
         'text'          => get_option('arjam_plugin_text_field'),
         'richtext'      => get_option('arjam_plugin_richtext_field'),
         'image'         => get_option('arjam_plugin_image_field'),
