@@ -20,17 +20,28 @@ It uses cookies to store a hash that will hide the modal after the first visit. 
 
 ## Installation
 
+### WordPress Admin
+
+1. Go to **Plugins** -> **Add plugin**.
+2. Search for "arjam" in the search bar to the right.
+3. Click on **Install now**.
+4. Once installation is done, the button will change into **Activate**. Click it.
+5. Have fun!
+
+
 ### Manual installation
 
-1. Download the 'arjam-just-a-modal' zip file.
+1. Download the plugin from one of the two sources below:
+    1. [Official WordPress.org directory](https://wordpress.org/plugins/arjam-just-a-modal/)
+    2. [Latest release from GitHub](https://github.com/alessandrorosato/arjam-just-a-modal/releases)
 2. Extract the content and copy to the `/wp-content/plugins/` directory of your WordPress installation.
-3. From your WordPress dashboard, go to 'Plugins > Installed Plugins'.
-4. Find the 'ARJAM - Just a Modal' plugin and activate it.
+3. From your WordPress dashboard, go to **Plugins** > **Installed Plugins**.
+4. Find the "ARJAM - Just a Modal" plugin and activate it.
 5. Have fun!
 
 ## Style override
 
-You can eaily override the plugin's style by using the following IDs in your custom css file:
+You can easily override the plugin's style by using the following IDs in your custom css file:
 * `arjam-modal-title` - Title of the modal window.
 * `arjam-modal-image`  - Image of the modal window.
 * `arjam-modal-richtext` - Text of the modal window.
