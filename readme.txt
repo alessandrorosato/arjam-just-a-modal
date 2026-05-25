@@ -1,8 +1,8 @@
 === ARJAM - Just a Modal ===
 Contributors: alessandrorosato
 Tags: modal, popup
-Tested up to: 6.9
-Stable tag: 1.0.0
+Tested up to: 7.0
+Stable tag: 1.0.1
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -82,6 +82,9 @@ Yes you can! If you haven't seen it, scroll up to the "Style override" section. 
 3. Frontend - Desktop
 
 == Changelog ==
+
+= 1.0.1 =
+* Tested for WP 7.0.
 
 = 1.0.0 =
 * First release,the plugin is fully operational!
