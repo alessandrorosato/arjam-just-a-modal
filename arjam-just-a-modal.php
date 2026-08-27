@@ -41,7 +41,7 @@ add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'arjam_plugin_ad
 // Admin settings
 function arjam_plugin_settings_init() {
     register_setting('arjam_plugin_settings', 'arjam_plugin_text_field', ['type' => 'string', 'sanitize_callback' => 'sanitize_text_field']);
-    register_setting('arjam_plugin_settings', 'arjam_plugin_richtext_field', ['type' => 'string', 'sanitize_callback' => 'sanitize_textarea_field']);
+    register_setting('arjam_plugin_settings', 'arjam_plugin_richtext_field', ['type' => 'string', 'sanitize_callback' => 'wp_kses_post']);
     register_setting('arjam_plugin_settings', 'arjam_plugin_image_field', ['type' => 'string', 'sanitize_callback' => 'sanitize_text_field']);
     register_setting('arjam_plugin_settings', 'arjam_plugin_enable_modal', ['type' => 'boolean', 'sanitize_callback' => 'wp_validate_boolean']);
     register_setting('arjam_plugin_settings', 'arjam_plugin_hash', ['type' => 'string', 'sanitize_callback' => 'sanitize_text_field']);
