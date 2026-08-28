@@ -187,7 +187,11 @@ function arjam_plugin_section_callback() {
 }
 
 // Admin JS
-function arjam_plugin_admin_js() {
+function arjam_plugin_admin_js($hook_suffix) {
+    if ($hook_suffix !== 'toplevel_page_arjam-just-a-modal-plugin') {
+        return;
+    }
+    wp_enqueue_media();
     wp_enqueue_script('arjam-just-a-modal-admin-script', plugins_url('admin/js/arjam-just-a-modal-admin.js', __FILE__), array(), ARJAM_VERSION, true);
 }
 add_action('admin_enqueue_scripts', 'arjam_plugin_admin_js');
