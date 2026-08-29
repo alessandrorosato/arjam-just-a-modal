@@ -2,7 +2,7 @@
 Contributors: alessandrorosato
 Tags: modal, popup
 Tested up to: 7.0
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -15,7 +15,7 @@ This plugin is meant to deliver one thing and that's a simple modal that renders
 
 The minimal JavaScript code is written in vanilla JS without jQuery for a faster and lighter experience. Code is meant to load all modal assets (including the image) only when necessary, to avoid burdening your pages with unneeded requests.
 
-It uses cookies to store a hash that will hide the modal after the first visit. This hash can be invalidated from the admin section to force a re-render of the modal. Useful for when you want to push a new message/information.
+It uses the browser's local storage to store a hash that will hide the modal after the first visit. This hash can be invalidated from the admin section to force a re-render of the modal. Useful for when you want to push a new message/information.
 
 == Features ==
 
@@ -83,8 +83,14 @@ Yes you can! If you haven't seen it, scroll up to the "Style override" section. 
 
 == Changelog ==
 
+= 1.0.2 =
+* Bugfix: textarea will retain HTML tags.
+* Bugfix: fixed a bug locking the page scroll when clicking outside the modal.
+* Maintenance: admin scripts are now loaded only on plugin's page.
+* Tested for WP 7.1.
+
 = 1.0.1 =
 * Tested for WP 7.0.
 
 = 1.0.0 =
-* First release,the plugin is fully operational!
+* First release, the plugin is fully operational!
