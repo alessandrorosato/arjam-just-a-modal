@@ -42,7 +42,7 @@ add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'arjam_plugin_ad
 function arjam_plugin_settings_init() {
     register_setting('arjam_plugin_settings', 'arjam_plugin_text_field', ['type' => 'string', 'sanitize_callback' => 'sanitize_text_field']);
     register_setting('arjam_plugin_settings', 'arjam_plugin_richtext_field', ['type' => 'string', 'sanitize_callback' => 'wp_kses_post']);
-    register_setting('arjam_plugin_settings', 'arjam_plugin_image_field', ['type' => 'string', 'sanitize_callback' => 'sanitize_text_field']);
+    register_setting('arjam_plugin_settings', 'arjam_plugin_image_field', ['type' => 'string', 'sanitize_callback' => 'esc_url_raw']);
     register_setting('arjam_plugin_settings', 'arjam_plugin_enable_modal', ['type' => 'boolean', 'sanitize_callback' => 'wp_validate_boolean']);
     register_setting('arjam_plugin_settings', 'arjam_plugin_hash', ['type' => 'string', 'sanitize_callback' => 'sanitize_text_field']);
     register_setting('arjam_plugin_settings', 'arjam_plugin_delay', ['type' => 'string', 'sanitize_callback' => 'sanitize_text_field']);
@@ -151,7 +151,8 @@ function arjam_plugin_image_field_render() {
 
 function arjam_plugin_enable_modal_render() {
     $value = get_option('arjam_plugin_enable_modal', true);
-    echo '<input type="checkbox" name="arjam_plugin_enable_modal" ' . checked(true, $value, false) . '>';
+    echo '<input type="hidden" name="arjam_plugin_enable_modal" value="0">';
+    echo '<input type="checkbox" name="arjam_plugin_enable_modal" value="1" ' . checked(true, $value, false) . '>';
 }
 
 function arjam_plugin_hash_render() {
