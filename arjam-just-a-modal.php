@@ -199,6 +199,9 @@ add_action('admin_enqueue_scripts', 'arjam_plugin_admin_js');
 
 // Load assets
 function arjam_plugin_assets() {
+    if (!get_option('arjam_plugin_enable_modal', true)) {
+        return;
+    }
     wp_enqueue_style('arjam-just-a-modal-style', plugins_url('public/css/arjam-just-a-modal.css', __FILE__), array(), ARJAM_VERSION, 'all');
     wp_enqueue_script('arjam-just-a-modal-script', plugins_url('public/js/arjam-just-a-modal.js', __FILE__), array(), ARJAM_VERSION, true);
     wp_localize_script('arjam-just-a-modal-script', 'arjam_plugin_data', array(
