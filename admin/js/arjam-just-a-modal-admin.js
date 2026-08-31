@@ -1,9 +1,9 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const customBtn = document.getElementById('my-custom-admin-btn');
+document.addEventListener('DOMContentLoaded', function () {
+    const customBtn = document.getElementById('arjam-hash-generate-btn');
     const hashField = document.querySelector('input[name="arjam_plugin_hash"]');
 
     if (customBtn) {
-        customBtn.addEventListener('click', async function(e) {
+        customBtn.addEventListener('click', async function (e) {
             e.preventDefault();
             try {
                 const hash = await generateTimeHash();
@@ -28,10 +28,10 @@ async function generateTimeHash() {
     const encoder = new TextEncoder();
     // Use current time in milliseconds as the source
     const data = encoder.encode(Date.now().toString());
-    
+
     // Generate the hash buffer using Web Crypto API
     const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-    
+
     // Convert buffer to a hex string
     const hashArray = Array.from(new Uint8Array(hashBuffer));
     const fullHash = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');

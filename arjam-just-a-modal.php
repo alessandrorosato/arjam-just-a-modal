@@ -45,7 +45,7 @@ function arjam_plugin_settings_init() {
     register_setting('arjam_plugin_settings', 'arjam_plugin_image_field', ['type' => 'string', 'sanitize_callback' => 'esc_url_raw']);
     register_setting('arjam_plugin_settings', 'arjam_plugin_enable_modal', ['type' => 'boolean', 'sanitize_callback' => 'wp_validate_boolean']);
     register_setting('arjam_plugin_settings', 'arjam_plugin_hash', ['type' => 'string', 'sanitize_callback' => 'sanitize_text_field']);
-    register_setting('arjam_plugin_settings', 'arjam_plugin_delay', ['type' => 'string', 'sanitize_callback' => 'sanitize_text_field']);
+    register_setting('arjam_plugin_settings', 'arjam_plugin_delay', ['type' => 'integer', 'sanitize_callback' => 'absint']);
 
     add_settings_section(
         'arjam_plugin_section',
@@ -157,7 +157,7 @@ function arjam_plugin_enable_modal_render() {
 
 function arjam_plugin_hash_render() {
     $value = get_option('arjam_plugin_hash', '1');
-    echo '<input type="text" name="arjam_plugin_hash" value="' . esc_attr($value) . '" size="16"> <button type="button" id="my-custom-admin-btn" class="button button-secondary">Generate!</button>';
+    echo '<input type="text" name="arjam_plugin_hash" value="' . esc_attr($value) . '" size="16"> <button type="button" id="arjam-hash-generate-btn" class="button button-secondary">Generate!</button>';
 }
 
 function arjam_plugin_delay_render() {
