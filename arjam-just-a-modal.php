@@ -208,7 +208,7 @@ function arjam_plugin_assets() {
         'text'          => get_option('arjam_plugin_text_field'),
         'richtext'      => get_option('arjam_plugin_richtext_field'),
         'image'         => get_option('arjam_plugin_image_field'),
-        'enable_modal'  => get_option('arjam_plugin_enable_modal'),
+        'enable_modal'  => get_option('arjam_plugin_enable_modal', true),
         'modal_hash'    => get_option('arjam_plugin_hash', '1'),
         'modal_delay'   => get_option('arjam_plugin_delay', 0)
     ));
