@@ -16,8 +16,8 @@ document.addEventListener('DOMContentLoaded', function () {
         // Create modal HTML
         const modalHTML = `
             <div id="arjam-modal-background">
-                <div id="arjam-modal-content">
-                    <span id="arjam-modal-close">&times;</span>
+                <div id="arjam-modal-content" role="dialog" aria-modal="true"${arjam_plugin_data.text ? ' aria-labelledby="arjam-modal-title"' : ''}>
+                    <button type="button" id="arjam-modal-close" aria-label="Close">&times;</button>
                     ${title}
                     ${image}
                     ${text}
@@ -29,26 +29,41 @@ document.addEventListener('DOMContentLoaded', function () {
         // Get DOM elements
         const modal = document.getElementById('arjam-modal-background');
         const closeBtn = document.getElementById('arjam-modal-close');
+        let previouslyFocused = null;
 
-        // Close modal
-        closeBtn.addEventListener('click', function () {
+        function closeModal() {
             modal.style.display = 'none';
             document.body.classList.remove('arjam-modal-open');
-        });
+            document.removeEventListener('keydown', onKeydown);
+            if (previouslyFocused) {
+                previouslyFocused.focus();
+            }
+        }
+
+        function onKeydown(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        }
+
+        // Close modal
+        closeBtn.addEventListener('click', closeModal);
 
         // Close modal when clicking outside
         window.addEventListener('click', function (event) {
             if (event.target === modal) {
-                modal.style.display = 'none';
-                document.body.classList.remove('arjam-modal-open');
+                closeModal();
             }
         });
 
         const delay = arjam_plugin_data.modal_delay * 1000;
         setTimeout(function () {
+            previouslyFocused = document.activeElement;
             modal.style.display = 'block';
             localStorage.setItem('arjam_hash', currentHash);
             document.body.classList.add('arjam-modal-open');
+            document.addEventListener('keydown', onKeydown);
+            closeBtn.focus();
         }, delay);
     }
 });
