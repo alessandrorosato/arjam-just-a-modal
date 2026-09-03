@@ -86,9 +86,9 @@ Yes you can! If you haven't seen it, scroll up to the "Style override" section. 
 = 1.0.3 =
 * Bugfix: image field sanification.
 * Bugfix: delay field sanification.
-* Maintenance: Load assets only if modal is active.
-* Maintenance: expanded brwoser support on CSS media query.
-* Maintenance: improced accessibility.
+* Maintenance: load assets only if modal is active.
+* Maintenance: expanded browser support on CSS media query.
+* Maintenance: improved accessibility.
 
 = 1.0.2 =
 * Bugfix: textarea will retain HTML tags.
