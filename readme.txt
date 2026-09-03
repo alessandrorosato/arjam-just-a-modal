@@ -2,7 +2,7 @@
 Contributors: alessandrorosato
 Tags: modal, popup
 Tested up to: 7.1
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -82,6 +82,13 @@ Yes you can! If you haven't seen it, scroll up to the "Style override" section. 
 3. Frontend - Desktop
 
 == Changelog ==
+
+= 1.0.3 =
+* Bugfix: image field sanification.
+* Bugfix: delay field sanification.
+* Maintenance: Load assets only if modal is active.
+* Maintenance: expanded brwoser support on CSS media query.
+* Maintenance: improced accessibility.
 
 = 1.0.2 =
 * Bugfix: textarea will retain HTML tags.
