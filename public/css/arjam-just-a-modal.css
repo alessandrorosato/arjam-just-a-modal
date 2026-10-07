@@ -23,7 +23,6 @@
 
 @media (max-width: 767px) {
     #arjam-modal-content {
-        height: 90vh;
         max-width: 400px;
         margin: 5% auto;
         padding: 10px;
